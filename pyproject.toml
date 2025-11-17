@@ -1,0 +1,22 @@
+[project]
+name = "xLH-firmware"
+version = "0.1.0"
+description = ""
+authors = [
+    { name = "Pascal Helfenstein", email = "pascal.helfenstein@xemax.ch" },
+    { name = "Thomas Ruoss", email = "thomas.ruoss@xemax.ch" },
+]
+requires-python = ">=3.13"
+readme = "README.md"
+dependencies = [
+    "python-dotenv>=1.1.1",
+    "pydantic-settings>=2.11.0",
+    "httpx>=0.28.1",
+    "pydantic>=2.12.3",
+    "rich>=14.2.0",
+    "pillow>=12.0.0",
+    "jinja2>=3.1.6",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "."
