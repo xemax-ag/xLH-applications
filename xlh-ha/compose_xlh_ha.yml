@@ -1,0 +1,32 @@
+name: xlh_ha
+services:
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt:latest
+    container_name: xlh_ha_zigbee2mqtt
+    volumes:
+      - /srv/docker/xlh_ha/zigbee2mqtt:/app/data
+      - /run/udev:/run/udev:ro
+    ports:
+      # Frontend port
+      - 8100:8080
+    environment:
+      - TZ=Europe/Berlin
+    devices:
+      # Make sure this matched your adapter location: ls -l /dev/serial/by-id
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    restart: unless-stopped
+    # MQTT via Docker Bridge mqtt://172.17.0.1 to localhost:1883
+    # MQTT via Docker Container mqtt://xlh_ha_mosquitto:1883
+  xlh_ha_mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: xlh_ha_mosquitto
+    ports:
+      - 1883:1883    # MQTT
+      # - 8883:8883    # MQTTS (secure)
+      # - 9001:9001    # WebSockets
+    volumes:
+      - /srv/docker/xlh_ha/mosquitto/config:/mosquitto/config
+      - /srv/docker/xlh_ha/mosquitto/data:/mosquitto/data
+      - /srv/docker/xlh_ha/mosquitto/log:/mosquitto/log
+    restart: unless-stopped
+

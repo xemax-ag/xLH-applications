@@ -34,3 +34,7 @@ win_install_scoop:
 
 win_install_make:
 	scoop install main/make
+
+win_install_gh:
+	scoop install main/gh
+
