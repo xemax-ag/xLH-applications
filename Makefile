@@ -13,6 +13,9 @@ zone:
 install_uv:
 	curl -LsSf https://astral.sh/uv/install.sh | sh
 
+download_repo:
+	gh repo clone xemax-ag/xLH-projects
+
 win_venv_sync:
 	powershell uv sync
 
