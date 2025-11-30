@@ -4,7 +4,7 @@ services:
     image: koenkk/zigbee2mqtt:latest
     container_name: xlh_ha_zigbee2mqtt
     volumes:
-      - /srv/docker/xlh_ha/zigbee2mqtt:/app/data
+      - ./zigbee2mqtt:/app/data
       - /run/udev:/run/udev:ro
     ports:
       # Frontend port
@@ -25,8 +25,19 @@ services:
       # - 8883:8883    # MQTTS (secure)
       # - 9001:9001    # WebSockets
     volumes:
-      - /srv/docker/xlh_ha/mosquitto/config:/mosquitto/config
-      - /srv/docker/xlh_ha/mosquitto/data:/mosquitto/data
-      - /srv/docker/xlh_ha/mosquitto/log:/mosquitto/log
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
     restart: unless-stopped
+#  xlh_ha_node_red:
+#    image: nodered/node-red:latest
+#    container_name: xlh_ha_node_red
+#    environment:
+#      - TZ=Europe/Berlin
+#    ports:
+#      - 1880:1880
+#    volumes:
+#      - ./node_red:/data
+#    restart: unless-stopped
+
 
