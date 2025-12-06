@@ -2,7 +2,7 @@
 Der Thermoversuch zeigt eine exemplarische Umsetzungsstrategie aus der 
 Wärmelehre mithilfe moderner Technologien mit Industriebezug.
 Die Ankopplung der Aktorik und Sensorik erfolgt via MQTT auf einen
-<a href="https://kb.shelly.cloud/knowledge-base/shelly-1pm-gen3" target="_blank">Shelly 1PM</a> 
+<a href="https://kb.shelly.cloud/knowledge-base/shelly-1pm-gen4" target="_blank">Shelly 1PM</a> 
 mit 
 1_install_uv_package_manager.bat
 sowie 
