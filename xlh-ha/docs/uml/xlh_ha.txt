@@ -22,18 +22,16 @@ class _000_FB_VISU_BASE {
 
 class _100_FB_DEVICE {
     + bEnable: BOOL GET
-    - _pMqttClient: POINTER TO FB_MQTT_CLIENT
-    - _wsMqttTopicBase: WSTRING
-    - _wsMqttTopicBase: STRING
+    + pMqttClient: POINTER TO FB_MQTT_CLIENT
     - _fbMqttSubscriber: MQTTSubscribe
-    - _wsSubcribedTopicFilter: WSTRING
-    - _sSubscribedMessage: STRING
     - _fbMqttPublisher: MQTTPublish
-    - _wsPublishTopic: WSTRING
-    - _sPublishMessage: STRING
     + newMessage()
     + startup()
     + statusUpdate()
+    + publisher()
+    + pushFifoPublish()
+    + popFifoPublish()
+    + subscriber()
 }
 
 note bottom of _100_FB_DEVICE
@@ -43,29 +41,22 @@ end note
 
 class _200_FB_DEVICE_SHELLY_BASE {
     + bEnable: BOOL GET
-    - _wsMqttTopicEvent: WSTRING
-    - _wsMqttTopicStatus: WSTRING
     + newMessage()
     + startup()
     + statusUpdate()
 }
 
 class _201_FB_DEVICE_SHELLY_1PM_PLUG {
-    + bEnable: BOOL GET
-    - _bEnable: BOOL
-    + mReset()
+    + newMessage()
+    + publisher()
 }
 
 class _202_FB_DEVICE_SHELLY_1PM_TEMP {
-    + bEnable: BOOL GET
-    - _bEnable: BOOL
-    + mReset()
+    + newMessage()
 }
 
 class _300_FB_DEVICE_ZIGBEE2MQTT_BASE {
-    + bEnable: BOOL GET
-    - _bEnable: BOOL
-    + mReset()
+
 }
 
 note bottom of _300_FB_DEVICE_ZIGBEE2MQTT_BASE
