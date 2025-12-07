@@ -1,0 +1,114 @@
+@startuml
+skinparam dpi 300
+' skinparam monochrome true
+skinparam componentStyle uml2
+' skinparam classAttributeIconSize 0
+
+interface IVisu {
+}
+
+interface IDevice {
+}
+
+interface IDeviceShelly {
+}
+
+interface IDeviceZigbee2Mqtt {
+}
+
+class _000_FB_VISU_BASE {
+    + sLabel: STRING
+}
+
+class _100_FB_DEVICE {
+    + bEnable: BOOL GET
+    - _pMqttClient: POINTER TO FB_MQTT_CLIENT
+    - _wsMqttTopicBase: WSTRING
+    - _wsMqttTopicBase: STRING
+    - _fbMqttSubscriber: MQTTSubscribe
+    - _wsSubcribedTopicFilter: WSTRING
+    - _sSubscribedMessage: STRING
+    - _fbMqttPublisher: MQTTPublish
+    - _wsPublishTopic: WSTRING
+    - _sPublishMessage: STRING
+    + newMessage()
+    + startup()
+    + statusUpdate()
+}
+
+note bottom of _100_FB_DEVICE
+  instances of are created
+  in POU io
+end note
+
+class _200_FB_DEVICE_SHELLY_BASE {
+    + bEnable: BOOL GET
+    - _wsMqttTopicEvent: WSTRING
+    - _wsMqttTopicStatus: WSTRING
+    + newMessage()
+    + startup()
+    + statusUpdate()
+}
+
+class _201_FB_DEVICE_SHELLY_1PM_PLUG {
+    + bEnable: BOOL GET
+    - _bEnable: BOOL
+    + mReset()
+}
+
+class _202_FB_DEVICE_SHELLY_1PM_TEMP {
+    + bEnable: BOOL GET
+    - _bEnable: BOOL
+    + mReset()
+}
+
+class _300_FB_DEVICE_ZIGBEE2MQTT_BASE {
+    + bEnable: BOOL GET
+    - _bEnable: BOOL
+    + mReset()
+}
+
+note bottom of _300_FB_DEVICE_ZIGBEE2MQTT_BASE
+  under construction
+end note
+
+class FB_MQTT_CLIENT {
+    + bEnable: BOOL
+    + sHostname: STRING
+    + sHostname: STRING
+    + sClientId: STRING
+    + bConnected: BOOL
+    + bError: BOOL
+    + fbMqttClient: MQTTClient
+    + pMqttClient: POINTER TO FB_MQTT_CLIENT GET
+}
+
+package MQTT_Client_SL {
+    class MQTTClient {
+    }
+    class MQTTSubscribe {
+    }
+    class MQTTPublish {
+    }
+}
+
+_100_FB_DEVICE -left- FB_MQTT_CLIENT
+_100_FB_DEVICE -up- MQTTClient
+_100_FB_DEVICE -up- MQTTSubscribe
+_100_FB_DEVICE -up- MQTTPublish
+
+IVisu <|.. _000_FB_VISU_BASE
+IDevice <|.. _100_FB_DEVICE
+IDeviceShelly <|.. _200_FB_DEVICE_SHELLY_BASE
+IDeviceZigbee2Mqtt <|.. _300_FB_DEVICE_ZIGBEE2MQTT_BASE
+
+_000_FB_VISU_BASE <|-- _100_FB_DEVICE
+_100_FB_DEVICE <|-- _200_FB_DEVICE_SHELLY_BASE
+_200_FB_DEVICE_SHELLY_BASE <|-- _201_FB_DEVICE_SHELLY_1PM_PLUG
+_201_FB_DEVICE_SHELLY_1PM_PLUG <|-- _202_FB_DEVICE_SHELLY_1PM_TEMP
+
+_100_FB_DEVICE <|-- _300_FB_DEVICE_ZIGBEE2MQTT_BASE
+
+@enduml
+
+
