@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from pydantic_ai import Tool
-import asyncio
 from rich import print
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
 from deps import Deps
 from tools import set_oven_temperature
-from llm_model import get_model, LlmProvider, LlmModel
+from llm_model import get_model, LlmModel
+from object_to_file import base_model_to_file
 
 @dataclass
 class Deps:
@@ -23,10 +23,10 @@ class Recipe(BaseModel):
     preparation_steps: list[str] = Field(description='Zubereitungsschritte')
 
 def get_agent():
-    # model = get_model(llm_provider=LlmProvider.OPENROUTER, llm_model=LlmModel.OPENAI_GPT_5_1)
-    model = get_model(llm_provider=LlmProvider.OPENROUTER, llm_model=LlmModel.OPENAI_GPT_5_MINI)
-    # model = get_model(llm_provider=LlmProvider.OLLAMA, llm_model=LlmModel.GPT_OSS_20B)
-    # model = get_model(llm_provider=LlmProvider.OPENROUTER, llm_model=LlmModel.GROK_4)
+    model = get_model(llm_model=LlmModel.OPENROUTER_GPT_5_MINI)
+    # model = get_model(llm_model=LlmModel.OPENROUTER_GPT_5_NANO)
+    # model = get_model(llm_model=LlmModel.OPENROUTER_GEMINI_2_5_FLASH)
+    # model = get_model(llm_model=LlmModel.OLLAMA_GPT_OSS_20B)
     return Agent(
         model=model,
         system_prompt=('Du bist ein Pizzabäcker welcher Rezepte für kreative Pizzas kreirt. '
@@ -39,11 +39,12 @@ def get_agent():
         output_type=Recipe,
     )
 
-async def main(user_prompt: str):
-    deps = Deps(name='Peter')
+def main(user_prompt: str):
+    deps = Deps(name='-')
     agent = get_agent()
-    response = await agent.run(user_prompt=user_prompt, deps=deps)
+    response = agent.run_sync(user_prompt=user_prompt, deps=deps)
     result: Recipe = response.output
+    base_model_to_file(result)
 
     print(f'Antwort: {result.model_dump_json(indent=4)}')
 
@@ -55,11 +56,13 @@ async def main(user_prompt: str):
     print(f'frequency_penalty: {settings.get('frequency_penalty')}')
 
     usage = response.usage()
-    print(f"Input Tokens: {usage.input_tokens}")
-    print(f"Output Tokens: {usage.output_tokens}")
-    print(f"Total Tokens: {usage.total_tokens}")
+    print(f'Input Tokens: {usage.input_tokens}')
+    print(f'Output Tokens: {usage.output_tokens}')
+    print(f'Total Tokens: {usage.total_tokens}')
 
 if __name__ == '__main__':
-    asyncio.run(main(user_prompt='Ich habe im Kühlschrank Lachs, Salami, Ananas und Tomaten '
-                                 'Kreire mir eine Pizza. Da mein Backofen etwas alterschwach ist, '
-                                 'kann die Temperatur nicht höher als 210 Grad eingestellt werden.'))
+    main(user_prompt='Ich habe im Kühlschrank Lachs, Salami und Tomaten '
+                     'Kreire mir eine Pizza. '
+                     'Da mein Backofen etwas alterschwach ist, '
+                     'kann die Temperatur nicht höher als 225 Grad eingestellt werden '
+                     'und die Backzeit darf 30 Minuten nicht überschreiten.')

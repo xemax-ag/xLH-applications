@@ -13,7 +13,6 @@ def set_oven_temperature(ctx: RunContext[Deps], temperature: float) -> bool:
     return True if temperature >= 100 and temperature <= 250 else False
 
 def set_oven_temperature_opcua(temperature: float):
-    # FixMe: Async!
     ip_plc = '192.168.1.151'
     port_plc = 4840
     opcua_client = Client(f'opc.tcp://{ip_plc}:{port_plc}')
@@ -29,9 +28,8 @@ def set_oven_temperature_opcua(temperature: float):
 
         fOvenTemperatureSetpointNode.set_value(ua.DataValue(ua.Variant((temperature), ua.VariantType.Double)))
 
-        print(fOvenTemperatureNode.get_value())
-        print(bOvenNode.get_value())
-
+        # print(fOvenTemperatureNode.get_value())
+        # print(bOvenNode.get_value())
         # bOvenNode.set_value(ua.DataValue(ua.Variant((True), ua.VariantType.Boolean)))
 
     except Exception as exc:

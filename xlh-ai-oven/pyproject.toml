@@ -1,0 +1,23 @@
+[project]
+name = "xLH-projects"
+version = "0.1.0"
+description = ""
+authors = [
+    { name = "Pascal Helfenstein", email = "pascal.helfenstein@xemax.ch" },
+    { name = "Thomas Ruoss", email = "thomas.ruoss@xemax.ch" },
+]
+requires-python = ">=3.12"
+readme = "README.md"
+dependencies = [
+    "python-dotenv>=1.1.1",
+    "pydantic-settings>=2.11.0",
+    "pydantic>=2.12.3",
+    "rich>=14.2.0",
+    "jupyter>=1.1.1",
+    "pydantic-ai>=1.25.1",
+    "opcua>=0.98.13",
+    "cryptography>=46.0.3",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "."
