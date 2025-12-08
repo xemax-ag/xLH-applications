@@ -12,6 +12,4 @@ Massenpunktes eingebendet werden.
 5. Konturenoperationen
 6. Ausgabe des bearbeiteten Videobildes
 
-[Videodemo Objektfolger](https://web.microsoftstream.com/video/0ede9251-68b9-481a-9aa2-62d926ce7737)
-
 <img src="img/object_tracking.png" width="100%">

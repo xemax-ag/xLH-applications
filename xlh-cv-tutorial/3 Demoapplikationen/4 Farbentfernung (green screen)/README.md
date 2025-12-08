@@ -9,8 +9,6 @@ In einem Video soll der grüne Hintergrund ersetzt werden mit einem statischen H
 3. Ueberlagerung auf das Hintergrundbild
 4. Ausgabe des bearbeiteten Videobildes
 
-[Videodemo Farbentfernung](https://web.microsoftstream.com/video/120ba8f6-c703-4543-a5e2-22739f6a9fa7)
-
 <img src="img/green_screen.png" width="40%">
 .
 <img src="img/background.png" width="40%">

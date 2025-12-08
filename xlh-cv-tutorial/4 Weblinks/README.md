@@ -11,6 +11,3 @@ Sehr empfehlenswerte Website mit vielen pragmatischen Tutorials und Kursangebote
 ## scikit-image
 scikit-image ist eine freie Sammlung von Bildverarbeitungsalgorithmen.
 * [scikit-image](https://scikit-image.org/)
-
-## Divers Weblinks zu Tutorials
-* [tutorialkart](https://www.tutorialkart.com/opencv/python/)
