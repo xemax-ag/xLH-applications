@@ -1,4 +1,4 @@
-HOST=192.168.1.151
+HOST=192.168.1.131
 USER=xlh
 PASSWORD=xlh
 
@@ -35,11 +35,19 @@ clean:
 #ssh_clean:
 #	sshpass -p "${PASSWORD}" ssh -o "StrictHostKeyChecking=no" ${USER}@${HOST} "cd xemax/docker/xlh-ha && ls"
 
+#ssh_dev: ssh_down ssh_upload
+#	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/xlh-ha up"
+
+ssh_down: ssh_upload
+	 sshpass -p "${PASSWORD}" ssh "${USER}@${HOST}" "$(MAKE) -C ~/xemax/xlh-ha compose"
+
 ssh_upload:
 	sshpass -p "${PASSWORD}" rsync -av --delete -e "ssh -o StrictHostKeyChecking=no" \
 		--exclude codesys \
 		--exclude misc \
-		--exclude mosquitto \
-		--exclude zigbee2mqtt \
-		--exclude node_red \
-		./ ${USER}@${HOST}:xemax/docker/xlh-ha
+		--exclude docs \
+		--exclude data/zigbee2mqtt \
+		--exclude data/node_red \
+		--exclude README.md \
+		--exclude weblinks.md \
+		./ ${USER}@${HOST}:xemax/xlh-ha
