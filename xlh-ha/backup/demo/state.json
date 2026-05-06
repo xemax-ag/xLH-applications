@@ -1,0 +1,120 @@
+{
+    "0x04cd15fffe73ec1a": {
+        "state": "OFF",
+        "brightness": 57,
+        "update": {
+            "state": "idle",
+            "installed_version": 65554,
+            "latest_version": 65554,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/IKEA/zingo-lds-bulb-hwpwmcs-ws_release_prod_v65554_5d50205c-63c3-426d-bfba-4839c4b55bba.ota",
+            "latest_release_notes": "https://ww8.ikea.com/ikeahomesmart/releasenotes/releasenotes.html"
+        },
+        "linkquality": 148,
+        "color_temp_startup": 370,
+        "color_mode": "color_temp",
+        "color_temp": 370,
+        "power_on_behavior": "off"
+    },
+    "0x90ab96fffe0def3e": {
+        "brightness": 92,
+        "state": "OFF",
+        "update": {
+            "state": "idle"
+        },
+        "linkquality": 108,
+        "power_on_behavior": "off"
+    },
+    "0x001788010dd30c48": {
+        "state": "ON",
+        "update": {
+            "state": "available",
+            "installed_version": 16778496,
+            "latest_version": 16778500,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-011A-01000504-SmartPlug-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 160
+    },
+    "0x08fd52fffef66dc3": {
+        "state": "OFF",
+        "power_on_behavior": "previous",
+        "power": 0,
+        "current": 0.03,
+        "voltage": 0.1,
+        "energy": 0,
+        "update": {
+            "state": "idle",
+            "installed_version": 33816645,
+            "latest_version": 33816645,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/IKEA/inspelning-smart-plug-soc_release_prod_v33816645_02579ff4-6fec-42f6-8957-4048def87def.ota",
+            "latest_release_notes": null
+        },
+        "linkquality": 148
+    },
+    "0x001788010d26ede2": {
+        "battery": 100,
+        "update": {
+            "state": "idle"
+        },
+        "linkquality": 176
+    },
+    "0x94deb8fffe360c77": {
+        "battery": 100,
+        "temperature": 26.9,
+        "humidity": 46.5,
+        "comfort_temperature_min": 19,
+        "comfort_temperature_max": 27,
+        "comfort_humidity_min": 40,
+        "comfort_humidity_max": 60,
+        "temperature_units": "celsius",
+        "linkquality": 156,
+        "update": {
+            "state": "available",
+            "installed_version": 4105,
+            "latest_version": 8960,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Sonoff/snzb-02d_v2.3.0.ota",
+            "latest_release_notes": null
+        }
+    },
+    "0xa085e3fffec86d4c": {
+        "state": "OFF",
+        "power": 0,
+        "current": 0,
+        "voltage": 239.63,
+        "ac_frequency": 50.09,
+        "energy": 0,
+        "produced_energy": 0,
+        "wifi_config": {
+            "enabled": true,
+            "ssid": "hpna_fri",
+            "static_ip": "192.168.1.35",
+            "net_mask": "255.255.255.0",
+            "gateway": "192.168.1.1",
+            "name_server": "192.168.1.1"
+        },
+        "wifi_status": "got ip",
+        "ip_address": "192.168.1.35",
+        "dhcp_enabled": false,
+        "linkquality": 152
+    },
+    "0x001788010cc2f5d3": {
+        "battery": 100,
+        "linkquality": 148
+    },
+    "0xd885acfffee8849c": {
+        "power": 0,
+        "current": 0,
+        "voltage": 238.24,
+        "ac_frequency": 50.07,
+        "energy": 0,
+        "produced_energy": 0,
+        "wifi_config": {
+            "enabled": true,
+            "ssid": "hpna_fr"
+        },
+        "wifi_status": "got ip",
+        "ip_address": "192.168.1.225",
+        "dhcp_enabled": true,
+        "linkquality": 156
+    }
+}

@@ -1,4 +1,4 @@
-HOST=10.111.137.156
+HOST=192.168.1.131
 USER=xlh
 PASSWORD=xlh
 
@@ -51,3 +51,8 @@ ssh_upload:
 		--exclude README.md \
 		--exclude weblinks.md \
 		./ ${USER}@${HOST}:xemax/xlh-ha
+
+ssh_download:
+	sshpass -p "${PASSWORD}" rsync -av --delete -e "ssh -o StrictHostKeyChecking=no" \
+		--exclude log \
+		${USER}@${HOST}:xemax/xlh-ha/data/zigbee2mqtt/ ./backup/demo/
