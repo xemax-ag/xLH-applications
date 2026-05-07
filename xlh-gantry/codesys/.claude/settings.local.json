@@ -3,7 +3,10 @@
     "allow": [
       "Bash(awk '{print $2}')",
       "Skill(update-config)",
-      "mcp__codesys-ide"
+      "mcp__codesys-ide",
+      "Bash(git -C D:\\\\GitHub\\\\xLH-applications rev-parse --show-toplevel)",
+      "Bash(cd /d D:\\\\GitHub\\\\xLH-applications)",
+      "Bash(dir /B)"
     ]
   },
   "enabledMcpjsonServers": [
