@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "codesys-ide": {
+      "command": "C:\\Program Files\\CODESYS 3.5.22.10\\CODESYS\\CodesysMCPBridge\\CodesysMCPBridge.exe",
+      "args": []
+    }
+  }
+}
